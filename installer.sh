@@ -4,30 +4,30 @@ curl -o "$TMPDIR/dsuperuser" https://raw.githubusercontent.com/Roblox-Project-20
 
 curl -o "$TMPDIR/tsu-sudo" https://raw.githubusercontent.com/Roblox-Project-202X/DSuperUser/refs/heads/main/tsu-sudo
 
-mkdir -p "$HOME/bin"
+mkdir -p "$HOME/.dsuperuser/bin"
 
-rm -rf "$HOME/bin/su"
-rm -rf "$HOME/bin/dsudo"
-rm -rf "$HOME/bin/dsuperuser"
-rm -rf "$HOME/bin/sudo"
+rm -rf "$HOME/.dsuperuser/bin/su"
+rm -rf "$HOME/.dsuperuser/bin/tsu"
+rm -rf "$HOME/.dsuperuser/bin/dsuperuser"
+rm -rf "$HOME/.dsuperuser/bin/sudo"
 
-install -Dm755 "$TMPDIR/dsuperuser" "$HOME/bin/dsuperuser"
+install -Dm755 "$TMPDIR/dsuperuser" "$HOME/.dsuperuser/bin/dsuperuser"
 
-install -Dm755 "$TMPDIR/tsu-sudo" "$HOME/bin/sudo"
+install -Dm755 "$TMPDIR/tsu-sudo" "$HOME/.dsuperuser/bin/tsu"
 
-ln -ds "$HOME/bin/dsuperuser" "$HOME/bin/su"
+ln -ds "$HOME/.dsuperuser/bin/dsuperuser" "$HOME/.dsuperuser/bin/su"
 
-ln -ds "$HOME/bin/dsuperuser" "$HOME/bin/dsudo"
+ln -ds "$HOME/.dsuperuser/bin/dsuperuser" "$HOME/.dsuperuser/bin/sudo"
 
-export PATH="$HOME/bin:$PREFIX/bin:$PATH"
+export PATH = "$HOME/.dsuperuser/bin:$PREFIX/bin:$PATH"
 
-echo "export PATH=\"$HOME/bin:$PREFIX/bin:\$PATH\"" >> "$HOME/.bashrc"
+echo "export PATH=\"$HOME/.dsuperuser/bin:$PREFIX/bin:\$PATH\"" >> "$HOME/.bashrc"
 
 # source "$HOME/.bashrc"
 
 echo
 
-dsuperuser -v
+dsuperuser sudo dsuperuser -v
 
 echo
 echo "Đã cài đặt thành công dsuperuser!"
