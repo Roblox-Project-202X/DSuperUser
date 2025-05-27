@@ -6,16 +6,18 @@ curl -o "$TMPDIR/tsu-sudo" https://raw.githubusercontent.com/Roblox-Project-202X
 
 mkdir -p "$HOME/bin"
 
+rm -rf "$HOME/bin/su"
+rm -rf "$HOME/bin/dsudo"
+rm -rf "$HOME/bin/dsuperuser"
+rm -rf "$HOME/bin/sudo"
+
 install -Dm755 "$TMPDIR/dsuperuser" "$HOME/bin/dsuperuser"
 
 install -Dm755 "$TMPDIR/tsu-sudo" "$HOME/bin/sudo"
 
-rm -rf "$HOME/bin/su"
-# rm -rf "$HOME/bin/sudo"
-
 ln -ds "$HOME/bin/dsuperuser" "$HOME/bin/su"
 
-# ln -ds "$HOME/bin/dsuperuser" "$HOME/bin/sudo"
+ln -ds "$HOME/bin/dsuperuser" "$HOME/bin/dsudo"
 
 export PATH="$HOME/bin:$PREFIX/bin:$PATH"
 
@@ -25,7 +27,7 @@ echo "export PATH=\"$HOME/bin:$PREFIX/bin:\$PATH\"" >> "$HOME/.bashrc"
 
 echo
 
-dsuperuser --help
+dsuperuser -v
 
 echo
 echo "Đã cài đặt thành công dsuperuser!"
